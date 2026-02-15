@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka+One&family=Playfair+Display:wght@700;900&family=Poppins:wght@300;400;600;800&display=swap');
+
+:root {
+    --sky-blue: #00BFFF;
+    --navy-blue: #003366;
+    --light-bg: #F0F8FF;
+}
+
+body { font-family: 'Poppins', sans-serif; background-color: var(--light-bg); scroll-behavior: smooth; overflow-x: hidden; }
+
+/* 3D OCEAN BUBBLE HEADING */
+.hotel-title {
+    font-family: 'Fredoka One', cursive; font-size: 3.5rem; color: var(--sky-blue);
+    text-shadow: 0px 4px 0px #008ebf; -webkit-text-stroke: 1.5px white; margin-bottom: 0;
+}
+
+.hero-section {
+    background: linear-gradient(rgba(0,51,102,0.4), rgba(0,191,255,0.2)), url('image/rainbow.webp');
+    background-size: cover; background-position: center; background-attachment: fixed;
+    height: 60vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+}
+
+.hero-main-title { font-family: 'Playfair Display', serif; }
+
+/* ROOMS & SLIDERS */
+.room-img { height: 260px; object-fit: cover; }
+.room-card { transition: 0.3s; border-radius: 15px; border: none; overflow: hidden; background: white; }
+.room-card:hover { transform: translateY(-10px); box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+
+/* GALLERY */
+.gallery-img { width: 100%; height: 200px; object-fit: cover; transition: 0.4s; border-radius: 10px; cursor: pointer; }
+.gallery-img:hover { transform: scale(1.05); filter: brightness(0.9); }
+
+/* SKY OCEAN CONTACT THEME */
+.sky-ocean-section { position: relative; background: linear-gradient(180deg, #87CEEB 0%, #00BFFF 100%); overflow: hidden; padding: 80px 0; }
+.contact-glass-premium { background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(15px); border: 1px solid rgba(255, 255, 255, 0.3); }
+.btn-white-glass { background: #ffffff; color: #00BFFF !important; font-weight: 700; border-radius: 50px; transition: 0.3s; }
+.btn-white-glass:hover { background: var(--navy-blue); color: #fff !important; transform: translateY(-3px); }
+
+/* CLOUDS & BUBBLES ANIMATION */
+.cloud-container { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; }
+.cloud { position: absolute; background: #fff; border-radius: 100px; opacity: 0.5; filter: blur(15px); }
+.cloud::after, .cloud::before { content: ''; position: absolute; background: #fff; border-radius: 100px; }
+.c1 { width: 200px; height: 60px; top: 15%; left: -200px; animation: moveClouds 30s linear infinite; }
+.c2 { width: 250px; height: 80px; top: 45%; left: -250px; animation: moveClouds 45s linear infinite; }
+.c3 { width: 150px; height: 50px; top: 75%; left: -150px; animation: moveClouds 25s linear infinite; }
+@keyframes moveClouds { 0% { transform: translateX(0); } 100% { transform: translateX(calc(100vw + 300px)); } }
+
+.bubbles { position: absolute; bottom: 0; left: 0; width: 100%; height: 100%; z-index: 2; }
+.bubble { position: absolute; bottom: -50px; background: rgba(255, 255, 255, 0.3); border-radius: 50%; animation: floatBubbles 8s infinite ease-in; }
+@keyframes floatBubbles { 0% { transform: translateY(0) scale(1); opacity: 0; } 20% { opacity: 0.5; } 100% { transform: translateY(-100vh) scale(1.5); opacity: 0; } }
+.bubble:nth-child(1) { width: 40px; height: 40px; left: 10%; animation-duration: 6s; }
+.bubble:nth-child(2) { width: 60px; height: 60px; left: 80%; animation-duration: 10s; }
+
+/* SLIM FOOTER */
+.ocean-footer { background: #003366; position: relative; }
+.waves-container { height: 30px; overflow: hidden; }
+.waves { width: 100%; height: 30px; }
+.parallax > use { animation: move-forever 20s infinite; }
+@keyframes move-forever { 0% { transform: translate3d(-90px,0,0); } 100% { transform: translate3d(85px,0,0); } }
+
+/* UTILITIES */
+.nav-link { position: relative; font-weight: 600; text-transform: uppercase; font-size: 0.85rem; color: var(--navy-blue) !important; }
+.nav-link::after { content: ''; position: absolute; width: 0; height: 2px; bottom: 0; left: 0; background: var(--sky-blue); transition: 0.3s; }
+.nav-link:hover::after { width: 100%; }
+
+.btn-book { background: var(--sky-blue); color: white; border: none; padding: 12px 25px; border-radius: 8px; font-weight: 600; transition: 0.3s; }
+.btn-book:hover { background: var(--navy-blue); transform: scale(1.05); }
+
+.reveal { opacity: 0; transform: translateY(30px); transition: 0.8s ease-out; }
+.reveal-visible { opacity: 1; transform: translateY(0); }
+
+@media (max-width: 768px) {
+    .hotel-title { font-size: 2.2rem; }
+    .hero-section { height: 50vh; }
+    .gallery-img { height: 140px; }
+}
+/* Contact Section Text Visibility Fix */
+.contact-glass-premium {
+    background: rgba(255, 255, 255, 0.2); /* Translucency konjam koraichu contrast yethirukken */
+    backdrop-filter: blur(15px);
+    border: 2px solid rgba(255, 255, 255, 0.4); /* Border thickness yethirukken */
+    border-radius: 40px;
+}
+
+/* Main Heading inside Glass */
+.contact-glass-premium h5 {
+    font-size: 1.8rem;
+    font-weight: 800 !important; /* Extra Bold */
+    color: #ffffff;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3); /* Strong Shadow for readability */
+    margin-bottom: 30px;
+}
+
+/* Labels like Location, WhatsApp Chat */
+.contact-glass-premium h6 {
+    font-size: 1.2rem;
+    font-weight: 700 !important; /* Bold Labels */
+    color: #ffffff;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.4);
+    margin-top: 10px;
+}
+
+/* Small Address & Info Text */
+.contact-glass-premium p.small {
+    font-size: 0.95rem;
+    font-weight: 600 !important; /* Normal-ah irundha weight-ah yethirukken */
+    color: #ffffff !important; /* text-white-50 thookittu pure white kuduthuruken */
+    opacity: 1 !important; /* Transparency full-ah remove panniyachu */
+    text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+    line-height: 1.5;
+}
+
+/* Icons Fix */
+.contact-glass-premium i {
+    color: #ffffff !important;
+    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.3));
+    font-size: 2.5rem !important;
+}
+
+/* Button Text Bold Fix */
+.btn-white-glass {
+    background: #ffffff;
+    color: #003366 !important; /* Navy Blue for contrast on white button */
+    font-weight: 800 !important;
+    letter-spacing: 1px;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: 0.3s ease;
+}
