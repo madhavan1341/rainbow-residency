@@ -196,17 +196,43 @@
         </div>
     </section>
 
-    <footer class="ocean-footer">
-        <div class="waves-container">
-            <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
-                <defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" /></defs>
-                <g class="parallax"><use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" /><use xlink:href="#gentle-wave" x="48" y="10" fill="#003366" /></g>
-            </svg>
+  <footer class="ocean-footer">
+    <div class="waves-container">
+        <svg class="waves" xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
+            <defs><path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" /></defs>
+            <g class="parallax">
+                <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7)" />
+                <use xlink:href="#gentle-wave" x="48" y="10" fill="#003366" />
+            </g>
+        </svg>
+    </div>
+    <div class="footer-bottom py-2 text-white">
+        <div class="container d-flex align-items-center justify-content-between position-relative">
+            
+            <!-- Center Copyright -->
+            <div class="footer-center-text mx-auto">
+                <p class="mb-0" style="font-size: 0.75rem; letter-spacing: 1px;">RAINBOW RESIDENCY AUROVILLE © 2026 | Managed by Vijayaraj</p>
+            </div>
+
+            <!-- Extreme Right: MatrixBytes -->
+            <div class="footer-right-corner">
+                <div class="created-by-wrapper">
+                    <span class="created-text">Created by</span>
+                    <a href="https://madhavan1341.github.io/MatrixBytes/" target="_blank" class="matrix-brand" id="matrix-brand-hover">
+                        <div class="matrix-logo-circle-zoom">
+                            <img src="images/logo.png" alt="MatrixBytes Logo">
+                        </div>
+                        <span class="matrix-text">
+                            <span class="m-red">Matrix</span><span class="b-white">Bytes</span>
+                        </span>
+                        <div id="glitter-container"></div>
+                    </a>
+                </div>
+            </div>
+
         </div>
-        <div class="footer-bottom py-1 text-center text-white">
-            <p class="mb-0" style="font-size: 0.75rem; letter-spacing: 1px;">RAINBOW RESIDENCY AUROVILLE © 2026 | Managed by Vijayaraj</p>
-        </div>
-    </footer>
+    </div>
+</footer>
 
    <div class="modal fade" id="bookingModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
@@ -283,6 +309,40 @@
             entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('reveal-visible'); });
         }, { threshold: 0.1 });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        const matrixArea = document.getElementById('matrix-brand-hover');
+const glitterBox = document.getElementById('glitter-container');
+let glitterTimer;
+
+function createStarDust() {
+    const colors = ['#FF0000', '#FFFFFF', '#FF8888'];
+    for (let i = 0; i < 5; i++) {
+        const dust = document.createElement('div');
+        dust.className = 'star-dust';
+        dust.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        const x = (Math.random() - 0.5) * 80 + 'px';
+        const y = (Math.random() - 0.5) * 80 + 'px';
+        dust.style.setProperty('--x', x);
+        dust.style.setProperty('--y', y);
+        
+        dust.style.left = '40%';
+        dust.style.top = '50%';
+        
+        glitterBox.appendChild(dust);
+        setTimeout(() => dust.remove(), 800);
+    }
+}
+
+if (matrixArea) {
+    matrixArea.addEventListener('mouseenter', () => {
+        glitterTimer = setInterval(createStarDust, 150);
+    });
+    matrixArea.addEventListener('mouseleave', () => {
+        clearInterval(glitterTimer);
+    });
+    matrixArea.addEventListener('click', createStarDust);
+}
     </script>
 </body>
 </html>
